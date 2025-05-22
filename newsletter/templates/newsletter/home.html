@@ -1,0 +1,15 @@
+{% extends 'newsletter/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h2 class="mb-4">Bienvenue sur la newsletter Eneo</h2>
+        <p class="lead mb-5">Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et mises à jour directement dans votre boîte de réception.</p>
+        
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="{% url 'newsletter:subscribe' %}" class="btn btn-primary btn-lg px-4 gap-3">S'inscrire à la newsletter</a>
+            <a href="{% url 'newsletter:list' %}" class="btn btn-outline-secondary btn-lg px-4">Voir les archives</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

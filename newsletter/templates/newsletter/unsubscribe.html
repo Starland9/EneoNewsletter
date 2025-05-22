@@ -1,0 +1,68 @@
+{% extends 'newsletter/base.html' %}
+
+{% block title %}Se désinscrire de la newsletter - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-body p-5">
+                <h2 class="card-title text-center mb-4">Se désinscrire de notre newsletter</h2>
+                
+                <p class="text-center mb-4">
+                    Nous sommes désolés de vous voir partir. Entrez votre adresse email pour vous désinscrire.
+                </p>
+                
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.email.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-danger btn-lg">Se désinscrire</button>
+                    </div>
+                </form>
+                
+                <hr class="my-4">
+                
+                <p class="text-center mb-0">
+                    Vous avez changé d'avis ? <a href="{% url 'newsletter:subscribe' %}">S'inscrire à la newsletter</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Désactiver la validation HTML5 du navigateur et activer la validation personnalisée
+(function () {
+    'use strict'
+    
+    // Récupérer tous les formulaires auxquels nous voulons appliquer la validation
+    var forms = document.querySelectorAll('.needs-validation')
+    
+    // Boucler sur chaque formulaire et empêcher la soumission si invalide
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+</script>
+{% endblock %}

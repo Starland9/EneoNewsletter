@@ -1,0 +1,46 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:app_list' app_label='newsletter' %}">Newsletter</a>
+&rsaquo; <a href="{% url 'admin:newsletter_subscriber_changelist' %}">Abonnés</a>
+&rsaquo; Envoyer une newsletter de test
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <form method="post" id="send_test_newsletter_form">
+        {% csrf_token %}
+        <div class="form-row">
+            <div>
+                <h2>{% trans "Envoyer une newsletter de test" %}</h2>
+                <p>{% blocktrans count counter=subscribers|length %}
+                    Vous êtes sur le point d'envoyer une newsletter de test à 1 abonné.
+                {% plural %}
+                    Vous êtes sur le point d'envoyer une newsletter de test à {{ counter }} abonnés.
+                {% endblocktrans %}</p>
+
+                <div class="form-group">
+                    <label for="newsletter">{% trans "Sélectionnez une newsletter :" %}</label>
+                    <select name="newsletter" id="newsletter" class="form-control" required>
+                        <option value="">{% trans "--- Sélectionner ---" %}</option>
+                        {% for nl in newsletters %}
+                            <option value="{{ nl.id }}">{{ nl.subject }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="submit-row">
+                    <input type="submit" value="{% trans 'Envoyer' %}" class="default" name="_send">
+                    <a href="{% url 'admin:newsletter_subscriber_changelist' %}" class="button">{% trans 'Annuler' %}</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

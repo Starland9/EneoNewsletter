@@ -1,0 +1,72 @@
+{% extends 'newsletter/base.html' %}
+
+{% block title %}{{ newsletter.subject }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+<article class="newsletter-detail">
+    <header class="mb-4">
+        <small class="text-muted">{{ newsletter.sent_at|date:"d F Y" }}</small>
+        <h1 class="display-5 mb-3">{{ newsletter.subject }}</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="badge bg-primary">Newsletter</div>
+            <div>
+                <a href="#" class="text-decoration-none me-3" onclick="window.print(); return false;">
+                    <i class="bi bi-printer"></i> Imprimer
+                </a>
+                <a href="#" class="text-decoration-none" onclick="window.history.back(); return false;">
+                    <i class="bi bi-arrow-left"></i> Retour
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="newsletter-content">
+        {{ newsletter.content|linebreaks }}
+    </div>
+    
+    <footer class="mt-5 pt-4 border-top">
+        <p class="text-muted">
+            Vous recevez cet email car vous êtes inscrit à notre newsletter. 
+            <a href="{% url 'newsletter:unsubscribe' %}">Se désinscrire</a>.
+        </p>
+    </footer>
+</article>
+
+<div class="mt-5 text-center">
+    <a href="{% url 'newsletter:list' %}" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left"></i> Voir toutes les newsletters
+    </a>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.newsletter-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+.newsletter-content p {
+    margin-bottom: 1.5rem;
+}
+.newsletter-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+}
+.newsletter-content h2, 
+.newsletter-content h3, 
+.newsletter-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+.newsletter-content ul, 
+.newsletter-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+.newsletter-content li {
+    margin-bottom: 0.5rem;
+}
+</style>
+{% endblock %}
