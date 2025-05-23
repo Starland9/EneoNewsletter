@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files.">
+      <change afterPath="$PROJECT_DIR$/create_superuser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +18,13 @@
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,30 +52,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Django Server.EneoNewsletter.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Dockerfile (1).executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.web: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Django Server.EneoNewsletter.executor": "Run",
+    "Docker.Dockerfile (1).executor": "Run",
+    "Docker.Dockerfile.executor": "Run",
+    "Docker.docker-compose.yml.web: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="EneoNewsletter" type="Python.DjangoServer" factoryName="Django server">
       <module name="EneoNewsletter" />
@@ -173,7 +183,7 @@
       <workItem from="1747987942974" duration="755000" />
       <workItem from="1747988730922" duration="12154000" />
       <workItem from="1748002207115" duration="809000" />
-      <workItem from="1748003104066" duration="1050000" />
+      <workItem from="1748003104066" duration="2551000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -223,11 +233,30 @@
       <option name="project" value="LOCAL" />
       <updated>1748001082139</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files.">
+      <option name="closed" value="true" />
+      <created>1748005648339</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748005648339</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
@@ -235,6 +264,7 @@
     <MESSAGE value="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management." />
     <MESSAGE value="Update SQL data source definitions for routines and packages&#10;&#10;Adjusted collation definitions and reorganized routines and packages in the SQL data source file. Introduced new JSON-related and window function routines, ensuring compatibility and enhanced functionality for updated server version 3.45.1." />
     <MESSAGE value="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations." />
+    <MESSAGE value="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files." />
   </component>
 </project>

@@ -32,6 +32,9 @@ COPY . .
 
 # Étape 8: Exécuter les commandes de collecte statique et de migration
 RUN python manage.py collectstatic --noinput --clear
+RUN python manage.py migrate
+RUN python create_superuser.py
+
 
 # Étape 9: Exposer le port 10000
 EXPOSE 10000
