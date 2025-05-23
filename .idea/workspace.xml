@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files.">
-      <change afterPath="$PROJECT_DIR$/create_superuser.py" afterDir="false" />
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Update project setup: add superuser script and revise configs&#10;&#10;Added `create_superuser.py` for automatic superuser creation in the project setup. Updated `Dockerfile` to include migrations and superuser creation commands. Commented out unused CSRF settings, database configurations, and associated dependencies in `docker-compose.yml` for streamlined development.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
@@ -183,7 +181,7 @@
       <workItem from="1747987942974" duration="755000" />
       <workItem from="1747988730922" duration="12154000" />
       <workItem from="1748002207115" duration="809000" />
-      <workItem from="1748003104066" duration="2551000" />
+      <workItem from="1748003104066" duration="4174000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -241,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748005648339</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Update project setup: add superuser script and revise configs&#10;&#10;Added `create_superuser.py` for automatic superuser creation in the project setup. Updated `Dockerfile` to include migrations and superuser creation commands. Commented out unused CSRF settings, database configurations, and associated dependencies in `docker-compose.yml` for streamlined development.">
+      <option name="closed" value="true" />
+      <created>1748007473239</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748007473239</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +271,7 @@
     <MESSAGE value="Update SQL data source definitions for routines and packages&#10;&#10;Adjusted collation definitions and reorganized routines and packages in the SQL data source file. Introduced new JSON-related and window function routines, ensuring compatibility and enhanced functionality for updated server version 3.45.1." />
     <MESSAGE value="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations." />
     <MESSAGE value="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Subscriber model and add project setup documentation&#10;&#10;Made the 'neighborhood' field in the Subscriber model mandatory. Added a comprehensive README for project setup, including installation, prerequisites, and deployment guidelines. Updated .gitignore to exclude environment-specific files." />
+    <MESSAGE value="Update project setup: add superuser script and revise configs&#10;&#10;Added `create_superuser.py` for automatic superuser creation in the project setup. Updated `Dockerfile` to include migrations and superuser creation commands. Commented out unused CSRF settings, database configurations, and associated dependencies in `docker-compose.yml` for streamlined development." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update project setup: add superuser script and revise configs&#10;&#10;Added `create_superuser.py` for automatic superuser creation in the project setup. Updated `Dockerfile` to include migrations and superuser creation commands. Commented out unused CSRF settings, database configurations, and associated dependencies in `docker-compose.yml` for streamlined development." />
   </component>
 </project>

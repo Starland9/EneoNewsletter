@@ -11,6 +11,9 @@ services:
     depends_on:
       - redis
 #      - db
+    networks:
+      - app-network
+
     restart: unless-stopped
     volumes:
       - static_volume:/app/staticfiles
@@ -41,10 +44,18 @@ services:
 
   redis:
     image: redis:7-alpine
+    networks:
+      - app-network
+
     ports:
-      - "6380:6379"
+      - "6379:6379"
     volumes:
       - redis_data:/data
+
+networks:
+  app-network:
+    driver: bridge
+
 
 #  db:
 #    image: postgres:15-alpine

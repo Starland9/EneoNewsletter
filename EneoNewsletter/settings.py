@@ -186,3 +186,6 @@ CELERY_BEAT_SCHEDULE = {
 }
 
 DOMAIN=os.getenv('DOMAIN', '127.0.0.1')
+
+REDIS_HOST = 'redis'  # Nom du service dans docker-compose
+REDIS_PORT = 6379
