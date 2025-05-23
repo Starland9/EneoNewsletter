@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-e8$9s2i=8p7ehwt6l2()l_^=p5+taiy6+)^0(@l4l(#yts4qut
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 # Email Configuration
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Pour le développement
@@ -36,7 +39,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'anastasie.app9@gmail.com'
 EMAIL_HOST_PASSWORD = 'pyna xjfu zlaz phdo'
-DEFAULT_FROM_EMAIL = 'no-reply@eneonewsletter.com'
+DEFAULT_FROM_EMAIL = 'no-reply@gmail.com'
 
 
 # Application definition
@@ -133,3 +136,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuration Celery
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE

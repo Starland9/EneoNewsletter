@@ -62,7 +62,7 @@ def unsubscribe(request, token=None):
     else:
         form = UnsubscribeForm()
         
-        # Si un token est fourni, pré-remplir le formulaire avec l'email correspondant
+        # Si un token est fourni, préremplir le formulaire avec l'email correspondant
         if token:
             try:
                 subscriber = Subscriber.objects.get(token=token, is_active=True)

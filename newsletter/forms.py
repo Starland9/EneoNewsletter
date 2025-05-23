@@ -9,16 +9,18 @@ import uuid
 class SubscribeForm(forms.ModelForm):
     class Meta:
         model = Subscriber
-        fields = ['email', 'first_name', 'last_name']
+        fields = ['email', 'first_name', 'last_name', 'neighborhood']
         labels = {
             'email': 'Adresse email',
             'first_name': 'Prénom',
             'last_name': 'Nom',
+            'neighborhood': 'Quartier',
         }
         widgets = {
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'votre@email.com'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Votre prénom'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Votre nom'}),
+            'neighborhood': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Votre quartier'}),
         }
     
     def clean_email(self):
@@ -53,7 +55,7 @@ class NewsletterAdminForm(ModelForm):
         model = Newsletter
         fields = ['subject', 'content', 'status']
         widgets = {
-            'subject': forms.TextInput(attrs={'class': 'vTextField', 'size': '90'}),
+            'subject': forms.TextInput(attrs={'class': 'vTextField', 'size': 90}),
             'content': forms.Textarea(attrs={'class': 'vLargeTextField', 'rows': 20, 'cols': 90}),
             'status': forms.Select(attrs={'class': 'vSelect'}),
         }

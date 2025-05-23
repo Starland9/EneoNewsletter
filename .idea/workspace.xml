@@ -4,19 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="start">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EneoNewsletter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EneoNewsletter.iml" afterDir="false" />
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EneoNewsletter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EneoNewsletter/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/templates/newsletter/subscribe.html" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/templates/newsletter/subscribe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -77,8 +84,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.122" />
-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
       </set>
     </attachedChunks>
   </component>
@@ -90,7 +97,9 @@
       <option name="presentableId" value="Default" />
       <updated>1747915899165</updated>
       <workItem from="1747915900249" duration="1301000" />
-      <workItem from="1747917217270" duration="4191000" />
+      <workItem from="1747917217270" duration="4297000" />
+      <workItem from="1747987942974" duration="755000" />
+      <workItem from="1747988730922" duration="3286000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -100,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747916113790</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status.">
+      <option name="closed" value="true" />
+      <created>1747921612642</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747921612642</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,6 +125,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
-    <option name="LAST_COMMIT_MESSAGE" value="start" />
+    <MESSAGE value="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status." />
   </component>
 </project>

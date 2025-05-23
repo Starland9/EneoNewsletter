@@ -7,6 +7,7 @@ class Subscriber(models.Model):
     email = models.EmailField(unique=True, validators=[validate_email])
     first_name = models.CharField(max_length=100, blank=True, verbose_name='Prénom')
     last_name = models.CharField(max_length=100, blank=True, verbose_name='Nom')
+    neighborhood = models.CharField(max_length=100, blank=True, verbose_name='Quartier')
     is_active = models.BooleanField(default=True, verbose_name='Actif')
     subscribed_date = models.DateTimeField(auto_now_add=True, verbose_name="Date d'inscription")
     unsubscribed_date = models.DateTimeField(null=True, blank=True, verbose_name='Date de désinscription')

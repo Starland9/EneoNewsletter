@@ -1,16 +1,16 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse
-from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.utils import timezone
 from .models import Subscriber, Newsletter
 from .forms import NewsletterAdminForm
+from .tasks import send_newsletter_task
+from django.contrib import messages
 
 
 class SubscriberAdmin(admin.ModelAdmin):
@@ -133,53 +133,52 @@ class NewsletterAdmin(admin.ModelAdmin):
     preview_link.short_description = "Aperçu"
     
     def save_model(self, request, obj, form, change):
+        # Si on clique sur le bouton "Envoyer la newsletter"
         if 'send_newsletter' in request.POST and obj.status == Newsletter.STATUS_DRAFT:
-            obj.status = Newsletter.STATUS_SENDING
-            obj.save()
-            # Ici, vous pourriez ajouter une tâche asynchrone pour envoyer la newsletter
-            # par exemple avec Celery ou Django Background Tasks
-            obj.status = Newsletter.STATUS_SENT
-            obj.sent_at = timezone.now()
+            # Sauvegarder d'abord l'objet pour obtenir un ID
+            super().save_model(request, obj, form, change)
             
-            # Envoyer la newsletter à tous les abonnés actifs
-            subscribers = Subscriber.objects.filter(is_active=True)
-            for subscriber in subscribers:
-                try:
-                    html_message = render_to_string('newsletter/emails/newsletter_email.html', {
-                        'newsletter': obj,
-                        'subscriber': subscriber,
-                        'unsubscribe_url': request.build_absolute_uri(
-                            reverse('newsletter:unsubscribe_with_token', args=[subscriber.token])
-                        ),
-                        'site_url': request.build_absolute_uri('/')
-                    })
-                    plain_message = strip_tags(html_message)
-                    
-                    send_mail(
-                        subject=obj.subject,
-                        message=plain_message,
-                        from_email=settings.DEFAULT_FROM_EMAIL,
-                        recipient_list=[subscriber.email],
-                        html_message=html_message,
-                        fail_silently=False,
-                    )
-                except Exception as e:
-                    # Log l'erreur mais continue avec les autres abonnés
-                    print(f"Erreur lors de l'envoi à {subscriber.email}: {str(e)}")
-        
-        super().save_model(request, obj, form, change)
+            # Obtenir le domaine pour construire les URLs absolues
+            domain = request.get_host()
+            
+            # Lancer la tâche asynchrone
+            send_newsletter_task.delay(obj.id, domain)
+            
+            # Afficher un message à l'utilisateur
+            from django.contrib import messages
+            messages.success(
+                request,
+                'L\'envoi de la newsletter a commencé. Vous serez notifié une fois terminé.'
+            )
+        else:
+            # Sauvegarder normalement sans envoyer
+            super().save_model(request, obj, form, change)
     
     def send_newsletter(self, request, queryset):
+
+        
+        domain = request.get_host()
+        count = 0
+        
         for newsletter in queryset:
             if newsletter.status == Newsletter.STATUS_DRAFT:
+                # Marquer comme en cours d'envoi
                 newsletter.status = Newsletter.STATUS_SENDING
                 newsletter.save()
-                # Ici, vous pourriez ajouter une tâche asynchrone
-                newsletter.status = Newsletter.STATUS_SENT
-                newsletter.sent_at = timezone.now()
-                newsletter.save()
-        self.message_user(request, f"{queryset.count()} newsletter(s) marquée(s) comme envoyée(s).")
-    send_newsletter.short_description = "Marquer comme envoyée"
+                
+                # Lancer la tâche asynchrone
+                send_newsletter_task.delay(newsletter.id, domain)
+                count += 1
+        
+        if count > 0:
+            messages.success(
+                request,
+                f"L'envoi de {count} newsletter(s) a commencé. "
+                "Vous serez notifié une fois terminé."
+            )
+        else:
+            messages.warning(request, "Aucune newsletter en brouillon sélectionnée.")
+    send_newsletter.short_description = "Envoyer la newsletter"
 
 
 admin.site.register(Subscriber, SubscriberAdmin)
