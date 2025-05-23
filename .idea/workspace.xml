@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status.">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/03680303-93ff-4103-9c75-835ec2b04fe4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/03680303-93ff-4103-9c75-835ec2b04fe4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EneoNewsletter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/templates/newsletter/subscribe.html" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/templates/newsletter/subscribe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/newsletter/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +58,14 @@
         <env name="DJANGO_SETTINGS_MODULE" value="EneoNewsletter.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (EneoNewsletter)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="host" value="192.168.100.105" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -99,7 +93,7 @@
       <workItem from="1747915900249" duration="1301000" />
       <workItem from="1747917217270" duration="4297000" />
       <workItem from="1747987942974" duration="755000" />
-      <workItem from="1747988730922" duration="3286000" />
+      <workItem from="1747988730922" duration="9841000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -117,7 +111,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747921612642</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status.">
+      <option name="closed" value="true" />
+      <created>1747992143244</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747992143244</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management.">
+      <option name="closed" value="true" />
+      <created>1747992171252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747992171252</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start" />
     <MESSAGE value="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status." />
+    <MESSAGE value="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management." />
   </component>
 </project>

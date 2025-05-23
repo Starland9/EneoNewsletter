@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    '192.168.100.105'
 ]
 
 # Email Configuration
@@ -52,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'newsletter.apps.NewsletterConfig',
+    'coupure.apps.CoupureConfig',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,12 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
+CELERY_BEAT_SCHEDULE = {
+    'fetch-coupures-hourly': {
+        'task': 'coupure.tasks.fetch_and_notify_coupures',
+        'schedule': crontab(hour='8', minute=0, day_of_week='*'),  # Tous les jours à 8h
+    },
+}
+
+DOMAIN='127.0.0.1:8000'
