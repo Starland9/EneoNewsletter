@@ -15,8 +15,6 @@ import os
 import dj_database_url
 from celery.schedules import crontab
 from dotenv import load_dotenv
-from decouple import config
-
 
 # Charger les variables d'environnement
 load_dotenv()
@@ -108,7 +106,7 @@ WSGI_APPLICATION = 'EneoNewsletter.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL'),
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         conn_health_checks=True,
     )

@@ -7,8 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONPATH=/app \
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on \
-    PIP_DEFAULT_TIMEOUT=100 \
-    POETRY_VERSION=1.6.1
+    PIP_DEFAULT_TIMEOUT=100
 
 # Étape 3: Créer et définir le répertoire de travail
 WORKDIR /app
@@ -30,14 +29,8 @@ RUN pip install --upgrade pip && \
 # Étape 7: Copier le projet
 COPY . .
 
-# Étape 8: Exécuter les commandes de collecte statique et de migration
-RUN python manage.py collectstatic --noinput --clear
-RUN python manage.py migrate
-RUN python create_superuser.py
-
-
-# Étape 9: Exposer le port 10000
+# Étape 8: Exposer le port 10000
 EXPOSE 10000
 
-# Étape 10: Commande de démarrage
-CMD ["gunicorn", "--bind", "0.0.0.0:10000", "EneoNewsletter.wsgi"]
+# Étape 9: Commande de démarrage
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput --clear && gunicorn --bind 0.0.0.0:10000 EneoNewsletter.wsgi"]

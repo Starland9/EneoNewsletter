@@ -6,13 +6,10 @@ services:
     command: gunicorn --bind 0.0.0.0:10000 EneoNewsletter.wsgi
     ports:
       - "10000:10000"
-    env_file:
-      - .env
+    env_file: ".env"
     depends_on:
       - redis
 #      - db
-    networks:
-      - app-network
 
     restart: unless-stopped
     volumes:
@@ -22,8 +19,7 @@ services:
   celery:
     build: .
     command: celery -A EneoNewsletter worker --loglevel=info
-    env_file:
-      - .env
+    env_file: ".env"
     depends_on:
       - redis
 #      - db
@@ -34,8 +30,7 @@ services:
   celery-beat:
     build: .
     command: celery -A EneoNewsletter beat --loglevel=info
-    env_file:
-      - .env
+    env_file: ".env"
     depends_on:
       - redis
     restart: unless-stopped
@@ -44,17 +39,12 @@ services:
 
   redis:
     image: redis:7-alpine
-    networks:
-      - app-network
-
+    env_file: ".env"
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
 
-networks:
-  app-network:
-    driver: bridge
 
 
 #  db:
