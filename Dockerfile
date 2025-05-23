@@ -33,4 +33,4 @@ COPY . .
 EXPOSE 10000
 
 # Étape 9: Commande de démarrage
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput --clear && python create_superuser.py && gunicorn --bind 0.0.0.0:10000 EneoNewsletter.wsgi"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput --clear && gunicorn --bind 0.0.0.0:10000 EneoNewsletter.wsgi"]

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Refactor Dockerfile to include superuser creation.&#10;&#10;Updated the Dockerfile to add a step for creating a superuser during the start-up process. This ensures better automation and consistency in the deployment workflow. Also refined related configuration and comments for clarity and maintainability.">
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Update Celery config to use environment variables  &#10;&#10;Replaced hardcoded Redis URLs in Celery configuration with values retrieved from environment variables using `os.environ.get`. This improves flexibility and allows for easier adjustments across environments. Default values are preserved for local development.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,7 @@
       <workItem from="1747988730922" duration="12154000" />
       <workItem from="1748002207115" duration="809000" />
       <workItem from="1748003104066" duration="6195000" />
-      <workItem from="1748010992066" duration="2449000" />
+      <workItem from="1748010992066" duration="3071000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -287,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748011963703</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Update Celery config to use environment variables  &#10;&#10;Replaced hardcoded Redis URLs in Celery configuration with values retrieved from environment variables using `os.environ.get`. This improves flexibility and allows for easier adjustments across environments. Default values are preserved for local development.">
+      <option name="closed" value="true" />
+      <created>1748013458101</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1748013458101</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +325,7 @@
     <MESSAGE value="Update database configuration to use environment variables&#10;&#10;Replaced `os.getenv` with `decouple.config` for retrieving the `DATABASE_URL`. This improves security, flexibility, and compatibility across various environments. Adjusted settings to align with best practices for managing environment-specific configurations." />
     <MESSAGE value="Refactor settings and Docker configuration.&#10;&#10;Replaced `decouple.config` with `os.getenv` for environment variable management in settings, improving compatibility. Consolidated and streamlined Docker setup by revising commands, removing redundant steps, and adjusting the `env_file` format. These changes enhance maintainability and simplify project deployment." />
     <MESSAGE value="Refactor Dockerfile to include superuser creation.&#10;&#10;Updated the Dockerfile to add a step for creating a superuser during the start-up process. This ensures better automation and consistency in the deployment workflow. Also refined related configuration and comments for clarity and maintainability." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Dockerfile to include superuser creation.&#10;&#10;Updated the Dockerfile to add a step for creating a superuser during the start-up process. This ensures better automation and consistency in the deployment workflow. Also refined related configuration and comments for clarity and maintainability." />
+    <MESSAGE value="Update Celery config to use environment variables  &#10;&#10;Replaced hardcoded Redis URLs in Celery configuration with values retrieved from environment variables using `os.environ.get`. This improves flexibility and allows for easier adjustments across environments. Default values are preserved for local development." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Celery config to use environment variables  &#10;&#10;Replaced hardcoded Redis URLs in Celery configuration with values retrieved from environment variables using `os.environ.get`. This improves flexibility and allows for easier adjustments across environments. Default values are preserved for local development." />
   </component>
 </project>
