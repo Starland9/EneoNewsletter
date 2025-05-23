@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Update SQL data source definitions for routines and packages&#10;&#10;Adjusted collation definitions and reorganized routines and packages in the SQL data source file. Introduced new JSON-related and window function routines, ensuring compatibility and enhanced functionality for updated server version 3.45.1.">
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations.">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celerybeat-schedule" beforeDir="false" afterPath="$PROJECT_DIR$/celerybeat-schedule" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/newsletter/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Starland9&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Starland9/EneoNewsletter.git&quot;,
+    &quot;accountId&quot;: &quot;b924334a-535d-4f8d-8c0b-c7285c3c0f5f&quot;
+  }
+}</component>
+  <component name="HttpClientEndpointsTabState">
+    <option name="cachedRequestData" value="&lt;CachedHttpClientTabRequests&gt;&#10;  &lt;entry key=&quot;687c7bf75c2993525f798957da57d53fb67989ae&quot; value=&quot;###&amp;#10;GET http://198.168.100.105&amp;#10;    :8000/s'inscrire/&quot; /&gt;&#10;  &lt;entry key=&quot;1c521df11455c85dff0ec59e1912022e191d0b4b&quot; value=&quot;###&amp;#10;GET http://localhost:8000/archives/&quot; /&gt;&#10;&lt;/CachedHttpClientTabRequests&gt;" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -29,27 +43,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Django Server.EneoNewsletter.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Django Server.EneoNewsletter.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.web: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="EneoNewsletter" type="Python.DjangoServer" factoryName="Django server">
       <module name="EneoNewsletter" />
       <option name="ENV_FILES" value="" />
@@ -76,6 +94,64 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Dockerfile (1)" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="containerName" value="" />
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml.web: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="web" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml.web: Compose Deployment" />
+        <item itemvalue="Docker.Dockerfile (1)" />
+        <item itemvalue="Docker.Dockerfile" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -95,7 +171,9 @@
       <workItem from="1747915900249" duration="1301000" />
       <workItem from="1747917217270" duration="4297000" />
       <workItem from="1747987942974" duration="755000" />
-      <workItem from="1747988730922" duration="10988000" />
+      <workItem from="1747988730922" duration="12154000" />
+      <workItem from="1748002207115" duration="809000" />
+      <workItem from="1748003104066" duration="1050000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -137,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748000180155</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations.">
+      <option name="closed" value="true" />
+      <created>1748001082139</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748001082139</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +234,7 @@
     <MESSAGE value="Add initial migrations for Newsletter and Subscriber models&#10;&#10;Introduce database migrations to create Newsletter and Subscriber models. The Newsletter model handles email subject, content, and status, while the Subscriber model manages user subscription details, including email, token, and activity status." />
     <MESSAGE value="Add Celery integration and newsletter async email tasks&#10;&#10;Introduced Celery to handle asynchronous tasks in the project, including integration settings and a task to send newsletters to active subscribers. Also added a 'neighborhood' field to the Subscriber model. These changes enable efficient email delivery and improve subscriber management." />
     <MESSAGE value="Update SQL data source definitions for routines and packages&#10;&#10;Adjusted collation definitions and reorganized routines and packages in the SQL data source file. Introduced new JSON-related and window function routines, ensuring compatibility and enhanced functionality for updated server version 3.45.1." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update SQL data source definitions for routines and packages&#10;&#10;Adjusted collation definitions and reorganized routines and packages in the SQL data source file. Introduced new JSON-related and window function routines, ensuring compatibility and enhanced functionality for updated server version 3.45.1." />
+    <MESSAGE value="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Coupure app with notifications system and Docker setup&#10;&#10;Introduce a new &quot;Coupure&quot; app for managing electricity outages with features to notify affected subscribers. Added Docker, Celery, and Redis for task management and scalability, along with Django migrations, templates, and admin configurations." />
   </component>
 </project>

@@ -1,5 +1,5 @@
 /db.sqlite3
 /newsletter/.env
 /.venv/
-/.env.example
+/.env
 *.pyc
