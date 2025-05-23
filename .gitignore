@@ -2,3 +2,4 @@
 /newsletter/.env
 /.venv/
 /.env.example
+*.pyc
