@@ -1,0 +1,26 @@
+Coupure d'électricité programmée
+
+Bonjour {% if subscriber.first_name %}{{ subscriber.first_name }}{% else %}cher abonné{% endif %},
+
+Nous vous informons d'une coupure d'électricité programmée dans votre quartier :
+
+DÉTAILS DE LA COUPURE
+-------------------
+Quartier : {{ coupure.quartier }}
+Date : {{ coupure.date|date:"l d F Y" }}
+Heure : De {{ coupure.heure_debut }} à {{ coupure.heure_fin }}
+Raison : {{ coupure.observations }}
+{% if coupure.ville %}Ville : {{ coupure.ville }}
+{% endif %}Région : {{ coupure.region }}
+
+Nous vous conseillons de prendre vos dispositions en conséquence.
+
+Cordialement,
+L'équipe Eneo
+
+---
+© {% now "Y" %} Eneo. Tous droits réservés.
+Pour vous désinscrire : {{ unsubscribe_url }}
+Notre site web : https://www.eneo.cm
+
+Vous recevez cet email car vous êtes inscrit à notre service d'alerte coupure.
