@@ -11,11 +11,21 @@ app = Celery('EneoNewsletter')
 # sérialisées en JSON
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+# Configuration du broker et du backend de résultat
+app.conf.broker_url = settings.CELERY_BROKER_URL
+app.conf.result_backend = settings.CELERY_RESULT_BACKEND
+
+# Configuration de la sérialisation
+app.conf.accept_content = ['json']
+app.conf.task_serializer = 'json'
+app.conf.result_serializer = 'json'
+app.conf.timezone = settings.TIME_ZONE
+
 # Charger automatiquement les tâches depuis toutes les applications Django
 app.autodiscover_tasks()
 
 # Forcer la découverte des tâches de l'application newsletter
-app.autodiscover_tasks(['newsletter'])
+app.autodiscover_tasks(['newsletter', 'coupure'])
 
 # Cette tâche est utilisée pour tester que Celery fonctionne correctement
 @app.task(bind=True)

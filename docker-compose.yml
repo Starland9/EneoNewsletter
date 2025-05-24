@@ -48,7 +48,7 @@ services:
 
 
 #  db:
-#    image: postgres:15-alpine
+#    image: postgres:17-alpine
 #    volumes:
 #      - postgres_data:/var/lib/postgresql/data/
 #    env_file:
@@ -57,7 +57,7 @@ services:
 #      - "5432:5432"
 
 volumes:
-#  postgres_data:
+  postgres_data:
   redis_data:
   static_volume:
   media_volume:

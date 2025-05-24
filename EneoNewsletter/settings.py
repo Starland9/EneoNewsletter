@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import ssl
 from pathlib import Path
 import os
 import dj_database_url
+import redis
 from celery.schedules import crontab
 from dotenv import load_dotenv
 
@@ -178,8 +179,21 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuration Celery
-CELERY_BROKER_URL = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
-CELERY_RESULT_BACKEND = os.environ.get('REDIS_URL', 'redis://localhost:6379/0')
+redis_url = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
+
+# Configure Redis connection with SSL settings if using rediss://
+if redis_url.startswith('rediss://'):
+    CELERY_BROKER_URL = redis.from_url(
+        redis_url,
+        ssl_cert_reqs=ssl.CERT_NONE
+    )
+    CELERY_RESULT_BACKEND = redis.from_url(
+        redis_url,
+        ssl_cert_reqs=ssl.CERT_NONE
+    )
+else:
+    CELERY_BROKER_URL = redis_url
+    CELERY_RESULT_BACKEND = redis_url
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
