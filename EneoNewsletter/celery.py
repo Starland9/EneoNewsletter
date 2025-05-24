@@ -1,4 +1,6 @@
 import os
+import ssl
+
 from celery import Celery
 from django.conf import settings
 
@@ -14,6 +16,11 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 # Configuration du broker et du backend de résultat
 app.conf.broker_url = settings.CELERY_BROKER_URL
 app.conf.result_backend = settings.CELERY_RESULT_BACKEND
+
+if settings.CELERY_BROKER_URL.startswith("rediss://"):
+    app.conf.broker_use_ssl = {
+        'ssl_cert_reqs': ssl.CERT_OPTIONAL
+    }
 
 # Configuration de la sérialisation
 app.conf.accept_content = ['json']
