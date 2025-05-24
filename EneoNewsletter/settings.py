@@ -179,7 +179,7 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configuration Celery
-redis_url = os.environ.get('REDIS_URL', 'redis://redis:6379/0')
+redis_url = os.environ.get('REDIS_URL', 'redis://red-d0o8vsmmcj7s73e91l50:6379')
 
 CELERY_BROKER_URL = redis_url
 CELERY_RESULT_BACKEND = redis_url

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Refactor admin display and comment out unused method&#10;&#10;Removed the `get_notified_subscribers_count` field from `list_display` in `CoupureAdmin` and commented out its corresponding method for clarity. These changes simplify the admin interface and remove unused functionality while preserving the method for potential future use.">
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/celery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
@@ -159,7 +159,7 @@
       <workItem from="1748002207115" duration="809000" />
       <workItem from="1748003104066" duration="6195000" />
       <workItem from="1748010992066" duration="4252000" />
-      <workItem from="1748081511235" duration="8422000" />
+      <workItem from="1748081511235" duration="9151000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -297,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748086064468</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly.">
+      <option name="closed" value="true" />
+      <created>1748095525242</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1748095525242</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +339,7 @@
     <MESSAGE value="Update Dockerfile to remove superuser creation step&#10;&#10;Removed the automatic superuser creation step from the Dockerfile startup command. This streamlines the deployment process and avoids potential issues during container initialization. Manual superuser creation can now be handled separately if needed." />
     <MESSAGE value="Refactor Celery, admin, and Docker configurations.&#10;&#10;Updated Celery settings to support Redis URLs with SSL and refined admin methods for better clarity and functionality. Removed the automatic superuser creation step from Dockerfile for streamlined deployment. Adjusted `docker-compose.yml` and other configurations to enhance maintainability and compatibility." />
     <MESSAGE value="Refactor admin display and comment out unused method&#10;&#10;Removed the `get_notified_subscribers_count` field from `list_display` in `CoupureAdmin` and commented out its corresponding method for clarity. These changes simplify the admin interface and remove unused functionality while preserving the method for potential future use." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor admin display and comment out unused method&#10;&#10;Removed the `get_notified_subscribers_count` field from `list_display` in `CoupureAdmin` and commented out its corresponding method for clarity. These changes simplify the admin interface and remove unused functionality while preserving the method for potential future use." />
+    <MESSAGE value="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly." />
   </component>
 </project>
