@@ -8,7 +8,7 @@ from .tasks import fetch_and_notify_coupures
 
 @admin.register(Coupure)
 class CoupureAdmin(admin.ModelAdmin):
-    list_display = ('quartier', 'date', 'heure_debut', 'heure_fin', 'region', 'get_notified_subscribers_count')
+    list_display = ('quartier', 'date', 'heure_debut', 'heure_fin', 'region')
     list_filter = ('date', 'region', 'ville')
     search_fields = ('quartier', 'ville', 'region', 'observations')
     readonly_fields = ('created_at', 'updated_at', 'notified_subscribers_list')
@@ -28,12 +28,11 @@ class CoupureAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
         }),
     )
-    
-    def get_notified_subscribers_count(self, obj):
-        return obj.subscribers_notified.count()
-    get_notified_subscribers_count.short_description = 'Abonnés notifiés'
-    get_notified_subscribers_count.admin_order_field = 'subscribers_notified'
-    
+
+    # @admin.display(description='Abonnés notifiés')
+    # def get_notified_subscribers_count(self, obj):
+    #     return obj.subscribers_notified.count()
+
     def notified_subscribers_list(self, obj):
         subscribers = obj.subscribers_notified.all()
         if not subscribers:
