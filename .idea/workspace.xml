@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly.">
+    <list default="true" id="48f9edd2-8c1d-4c2f-ac5b-2909200f7757" name="Changes" comment="Refactor Celery configuration for better SSL support&#10;&#10;Updated Celery settings to use SSL-compatible Redis URLs, ensuring compatibility with `rediss://` connections. Simplified configuration by adjusting relevant settings and initialization in `settings.py` and `celery.py`. This enhances security and eliminates redundant logic.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EneoNewsletter/celery.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/celery.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EneoNewsletter/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/EneoNewsletter/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/celerybeat-schedule" beforeDir="false" afterPath="$PROJECT_DIR$/celerybeat-schedule" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,31 +50,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Django Server.EneoNewsletter.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Dockerfile (1).executor&quot;: &quot;Run&quot;,
-    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml.web: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Django Server.EneoNewsletter.executor": "Run",
+    "Docker.Dockerfile (1).executor": "Run",
+    "Docker.Dockerfile.executor": "Run",
+    "Docker.docker-compose.yml.web: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "/home/landry/.local/share/JetBrains/PyCharm2025.1/Shell Script/shellcheck",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/landry/Dev/MANUELLA/Studroom/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="EneoNewsletter" type="Python.DjangoServer" factoryName="Django server">
       <module name="EneoNewsletter" />
@@ -159,7 +161,13 @@
       <workItem from="1748002207115" duration="809000" />
       <workItem from="1748003104066" duration="6195000" />
       <workItem from="1748010992066" duration="4252000" />
-      <workItem from="1748081511235" duration="9151000" />
+      <workItem from="1748081511235" duration="9380000" />
+      <workItem from="1748248337810" duration="661000" />
+      <workItem from="1748334898871" duration="1507000" />
+      <workItem from="1748345737551" duration="84000" />
+      <workItem from="1748345854402" duration="98000" />
+      <workItem from="1748439259980" duration="970000" />
+      <workItem from="1748441310716" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="start">
       <option name="closed" value="true" />
@@ -305,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748095525242</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Refactor Celery configuration for better SSL support&#10;&#10;Updated Celery settings to use SSL-compatible Redis URLs, ensuring compatibility with `rediss://` connections. Simplified configuration by adjusting relevant settings and initialization in `settings.py` and `celery.py`. This enhances security and eliminates redundant logic.">
+      <option name="closed" value="true" />
+      <created>1748096010287</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1748096010287</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +356,7 @@
     <MESSAGE value="Refactor Celery, admin, and Docker configurations.&#10;&#10;Updated Celery settings to support Redis URLs with SSL and refined admin methods for better clarity and functionality. Removed the automatic superuser creation step from Dockerfile for streamlined deployment. Adjusted `docker-compose.yml` and other configurations to enhance maintainability and compatibility." />
     <MESSAGE value="Refactor admin display and comment out unused method&#10;&#10;Removed the `get_notified_subscribers_count` field from `list_display` in `CoupureAdmin` and commented out its corresponding method for clarity. These changes simplify the admin interface and remove unused functionality while preserving the method for potential future use." />
     <MESSAGE value="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor Celery configuration for better SSL support&#10;&#10;Simplified Celery settings by using `broker_use_ssl` for SSL configuration with Redis URLs. This approach eliminates redundant logic while ensuring compatibility with `rediss://` connections. Adjusted relevant settings and initialization in `celery.py` accordingly." />
+    <MESSAGE value="Refactor Celery configuration for better SSL support&#10;&#10;Updated Celery settings to use SSL-compatible Redis URLs, ensuring compatibility with `rediss://` connections. Simplified configuration by adjusting relevant settings and initialization in `settings.py` and `celery.py`. This enhances security and eliminates redundant logic." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor Celery configuration for better SSL support&#10;&#10;Updated Celery settings to use SSL-compatible Redis URLs, ensuring compatibility with `rediss://` connections. Simplified configuration by adjusting relevant settings and initialization in `settings.py` and `celery.py`. This enhances security and eliminates redundant logic." />
   </component>
 </project>
