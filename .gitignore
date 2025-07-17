@@ -3,3 +3,6 @@
 /.venv/
 /.env
 *.pyc
+.idea/workspace.xml
+.idea/httpRequests/http-client.cookies
+.idea/httpRequests/http-requests-log.http
