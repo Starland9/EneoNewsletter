@@ -203,21 +203,18 @@ Créez un fichier `.env` à la racine du projet avec les variables suivantes :
 ```bash
 # Django
 SECRET_KEY=votre_secret_key_super_securisee
-DEBUG=False  # True uniquement en développement
+DEBUG=0  # 1 uniquement en développement
 ALLOWED_HOSTS=localhost,127.0.0.1,votre-domaine.com
 DJANGO_SETTINGS_MODULE=EneoNewsletter.settings
+DOMAIN=votre-domaine.com
 
-# Base de données PostgreSQL
-DATABASE_URL=postgresql://user:password@host:port/dbname
-# Ou séparément :
-DB_NAME=eneonewsletter
-DB_USER=postgres
-DB_PASSWORD=votre_mot_de_passe_securise
-DB_HOST=db  # ou adresse IP/domaine
-DB_PORT=5432
+# Base de données PostgreSQL (externe : URL du service Dokploy ou autre)
+# Format : postgresql://user:password@host:5432/dbname
+DATABASE_URL=postgresql://user:password@host:5432/dbname
 
-# Redis
-REDIS_URL=redis://redis:6379/0
+# Redis (externe : URL du service Dokploy ou autre ; rediss:// pour TLS)
+# Celery réutilise REDIS_URL (voir settings.py)
+REDIS_URL=redis://host:6379/0
 
 # Configuration Email
 EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
@@ -227,7 +224,6 @@ EMAIL_USE_TLS=True
 EMAIL_HOST_USER=votre.email@gmail.com
 EMAIL_HOST_PASSWORD=votre_mot_de_passe_application
 DEFAULT_FROM_EMAIL=noreply@eneo.cm
-EMAIL_DEFAULT_FROM=Newsletter Eneo <noreply@eneo.cm>
 
 # Localisation
 TIME_ZONE=Africa/Douala
@@ -236,9 +232,7 @@ LANGUAGE_CODE=fr-fr
 # Gunicorn (Production)
 WEB_CONCURRENCY=4
 
-# Celery
-CELERY_BROKER_URL=redis://redis:6379/0
-CELERY_RESULT_BACKEND=redis://redis:6379/0
+# Celery : utilise REDIS_URL (voir settings.py)
 ```
 
 ### Configuration SMTP recommandée
