@@ -11,6 +11,8 @@ services:
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
+    networks:
+      - dokploy-network
 
   celery:
     build: .
@@ -19,6 +21,8 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
+    networks:
+      - dokploy-network
 
   celery-beat:
     build: .
@@ -27,7 +31,13 @@ services:
     restart: unless-stopped
     volumes:
       - .:/app
+    networks:
+      - dokploy-network
 
 volumes:
   static_volume:
   media_volume:
+
+networks:
+  dokploy-network:
+    external: true

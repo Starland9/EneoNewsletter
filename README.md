@@ -173,6 +173,10 @@ docker-compose up --build -d
 docker-compose ps
 ```
 
+> **Réseau Dokploy** : `docker-compose.yml` attache les services au réseau externe `dokploy-network`, nécessaire pour résoudre les hostnames des services Postgres/Redis gérés par Dokploy. En local, créez-le au préalable : `docker network create dokploy-network`.
+
+> **Migrations et fichiers statiques** : le service `web` exécute automatiquement `migrate` et `collectstatic` au démarrage.
+
 ### 4. Initialiser la base de données
 
 ```bash
