@@ -7,9 +7,9 @@ services:
     ports:
       - "10000:10000"
     env_file: ".env"
-    depends_on:
-      - redis
-#      - db
+    # depends_on:
+    # - redis
+    #      - db
 
     restart: unless-stopped
     volumes:
@@ -20,9 +20,9 @@ services:
     build: .
     command: celery -A EneoNewsletter worker --loglevel=info
     env_file: ".env"
-    depends_on:
-      - redis
-#      - db
+    # depends_on:
+    # - redis
+    #      - db
     restart: unless-stopped
     volumes:
       - .:/app
@@ -31,21 +31,19 @@ services:
     build: .
     command: celery -A EneoNewsletter beat --loglevel=info
     env_file: ".env"
-    depends_on:
-      - redis
+    # depends_on:
+    # - redis
     restart: unless-stopped
     volumes:
       - .:/app
 
-  redis:
-    image: redis:7-alpine
-    env_file: ".env"
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-
-
+  # redis:
+  #   image: redis:7-alpine
+  #   env_file: ".env"
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis_data:/data
 
 #  db:
 #    image: postgres:17-alpine
@@ -57,7 +55,7 @@ services:
 #      - "5432:5432"
 
 volumes:
-  postgres_data:
-  redis_data:
+  # postgres_data:
+  # redis_data:
   static_volume:
   media_volume:
